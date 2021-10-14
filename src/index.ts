@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
 
 const typeScriptExtensionId = 'vscode.typescript-language-features';
-const pluginId = 'typescript-lit-html-plugin';
-const configurationSection = 'lit-html';
+const pluginId = 'typescript-hbs-plugin';
+const configurationSection = 'hbs';
 
 interface SynchronizedConfiguration {
     tags?: ReadonlyArray<string>;
@@ -14,15 +14,18 @@ interface SynchronizedConfiguration {
 export async function activate(context: vscode.ExtensionContext) {
     const extension = vscode.extensions.getExtension(typeScriptExtensionId);
     if (!extension) {
+        console.log('no-extension');
         return;
     }
 
     await extension.activate();
     if (!extension.exports || !extension.exports.getAPI) {
+        console.log('no-api');
         return;
     }
     const api = extension.exports.getAPI(0);
     if (!api) {
+        console.log('no-api-0');
         return;
     }
 
@@ -42,12 +45,15 @@ function synchronizeConfiguration(api: any) {
 function getConfiguration(): SynchronizedConfiguration {
     const config = vscode.workspace.getConfiguration(configurationSection);
     const outConfig: SynchronizedConfiguration = {
-        format: {}
+        format: {
+            enabled: true
+        },
+        tags: ['hbs']
     };
 
     withConfigValue<string[]>(config, 'tags', tags => { outConfig.tags = tags; });
     withConfigValue<boolean>(config, 'format.enabled', enabled => { outConfig.format.enabled = enabled; });
-
+    console.log('outConfig', JSON.stringify(outConfig));
     return outConfig;
 }
 

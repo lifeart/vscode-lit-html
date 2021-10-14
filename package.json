@@ -1,10 +1,10 @@
 {
-    "name": "lit-html",
+    "name": "hbs",
     "private": true,
-    "displayName": "lit-html",
-    "description": "Syntax highlighting and IntelliSense for html inside of JavaScript and TypeScript tagged template strings",
-    "version": "1.11.1",
-    "publisher": "bierner",
+    "displayName": "hbs",
+    "description": "Syntax highlighting and IntelliSense for handlebars inside of JavaScript and TypeScript tagged template strings",
+    "version": "0.0.1",
+    "publisher": "lifeart",
     "icon": "docs/logo.png",
     "license": "MIT",
     "galleryBanner": {
@@ -12,19 +12,19 @@
         "theme": "light"
     },
     "repository": {
-        "url": "https://github.com/mjbvz/vscode-lit-html.git"
+        "url": "https://github.com/lifeart/vscode-hbs.git"
     },
     "bugs": {
-        "url": "https://github.com/mjbvz/vscode-lit-html/issues"
+        "url": "https://github.com/lifeart/vscode-hbs/issues"
     },
     "categories": [
         "Programming Languages"
     ],
     "keywords": [
-        "lit-html",
+        "hbs",
         "javascript",
         "typescript",
-        "html",
+        "handlebars",
         "template"
     ],
     "engines": {
@@ -40,24 +40,23 @@
     "contributes": {
         "configuration": [
             {
-                "id": "lit-html",
-                "title": "Lit HTML",
+                "id": "hbs",
+                "title": "glimmer hbs syntax",
                 "properties": {
-                    "lit-html.tags": {
+                    "hbs.tags": {
                         "type": "array",
-                        "description": "List of template tags to enable html intellisense in.",
+                        "description": "List of template tags to enable handlebars intellisense in.",
                         "items": {
                             "type": "string",
                             "description": "Tag name."
                         },
                         "default": [
-                            "html",
-                            "raw"
+                            "hbs"
                         ]
                     },
-                    "lit-html.format.enabled": {
+                    "hbs.format.enabled": {
                         "type": "boolean",
-                        "description": "Enable/disable formatting of html template strings.",
+                        "description": "Enable/disable formatting of handlebars template strings.",
                         "default": true
                     }
                 }
@@ -71,12 +70,12 @@
                     "source.jsx",
                     "source.ts",
                     "source.tsx",
-                    "text.html.basic"
+                    "text.handlebars.basic"
                 ],
-                "scopeName": "inline.lit-html",
-                "path": "./syntaxes/lit-html.json",
+                "scopeName": "inline.hbs",
+                "path": "./syntaxes/hbs.json",
                 "embeddedLanguages": {
-                    "meta.embedded.block.html": "html",
+                    "meta.embedded.block.handlebars": "handlebars",
                     "meta.embedded.block.css": "css",
                     "source.css": "css"
                 }
@@ -88,10 +87,11 @@
                     "source.jsx",
                     "source.ts",
                     "source.tsx",
-                    "text.html.basic"
+                    "text.html.basic",
+                    "text.handlebars.basic"
                 ],
-                "scopeName": "inline.lit-html.string.injection",
-                "path": "./syntaxes/lit-html-string-injection.json",
+                "scopeName": "inline.hbs.string.injection",
+                "path": "./syntaxes/hbs-string-injection.json",
                 "embeddedLanguages": {
                     "meta.template.expression.ts": "typescript"
                 }
@@ -103,10 +103,11 @@
                     "source.jsx",
                     "source.ts",
                     "source.tsx",
-                    "text.html.basic"
+                    "text.html.basic",
+                    "text.handlebars.basic"
                 ],
-                "scopeName": "inline.lit-html.style.injection",
-                "path": "./syntaxes/lit-html-style-injection.json",
+                "scopeName": "inline.hbs.style.injection",
+                "path": "./syntaxes/hbs-style-injection.json",
                 "embeddedLanguages": {
                     "meta.template.expression.ts": "typescript"
                 }
@@ -118,10 +119,11 @@
                     "source.jsx",
                     "source.ts",
                     "source.tsx",
-                    "text.html.basic"
+                    "text.html.basic",
+                    "text.handlebars.basic"
                 ],
-                "scopeName": "inline.lit-html-svg",
-                "path": "./syntaxes/lit-html-svg.json",
+                "scopeName": "inline.hbs.svg",
+                "path": "./syntaxes/hbs-svg.json",
                 "embeddedLanguages": {
                     "meta.embedded.block.svg": "xml"
                 }
@@ -129,7 +131,7 @@
         ],
         "typescriptServerPlugins": [
             {
-                "name": "typescript-lit-html-plugin",
+                "name": "typescript-hbs-plugin",
                 "enableForWorkspaceTypeScriptVersions": true
             }
         ],
@@ -148,10 +150,10 @@
         "vscode:prepublish": "tsc -p ./",
         "compile": "tsc -p ./",
         "watch": "tsc -w -p ./",
-        "test": "node ./out/test"
+        "test": "node ./out/test",
     },
     "dependencies": {
-        "typescript-lit-html-plugin": "0.9.0"
+        "typescript-hbs-plugin": "0.1.0"
     },
     "devDependencies": {
         "@types/node": "^12.7.5",

@@ -13,7 +13,7 @@
                             "properties": {
                                 "name": {
                                     "enum": [
-                                        "typescript-lit-html-plugin"
+                                        "typescript-hbs-plugin"
                                     ]
                                 }
                             },
@@ -31,8 +31,7 @@
                                         "description": "Tag name."
                                     },
                                     "default": [
-                                        "html",
-                                        "raw"
+                                        "hbs"
                                     ]
                                 },
                                 "format": {
